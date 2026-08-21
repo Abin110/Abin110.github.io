@@ -3,100 +3,186 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hanbin Lin</title>
+  <meta name="description" content="Hanbin Lin — AI Security, Adversarial Machine Learning, Multimedia Security, Deepfake Defense and Digital Watermarking." />
+  <title>Hanbin Lin | AI Security & Multimedia Security</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background:#efefef; color:#111; height:100vh; overflow:hidden; }
-    .app { display:flex; height:100vh; }
-    .sidebar { width:280px; background:linear-gradient(180deg,#111,#444); color:#fff; padding:2rem 1.25rem; display:flex; flex-direction:column; box-shadow:4px 0 20px rgba(0,0,0,.2); }
-    .logo { font-size:1.6rem; font-weight:700; text-align:center; margin-bottom:2rem; }
-    .nav-item { padding:1rem; border-radius:12px; cursor:pointer; margin-bottom:.5rem; transition:.2s; }
-    .nav-item:hover,.nav-item.active { background:rgba(255,255,255,.15); }
-    .contact { margin-top:auto; border-top:1px solid rgba(255,255,255,.2); padding-top:1.5rem; }
-    .contact h3 { margin-bottom:1rem; }
-    .contact a { display:flex; align-items:center; gap:12px; color:#fff; text-decoration:none; margin-bottom:.85rem; opacity:.9; }
-    .contact a:hover { opacity:1; }
-    .icon { width:20px; text-align:center; }
-    .main { flex:1; overflow-y:auto; padding:2rem; background:#f7f7f7; }
-    .page { display:none; animation:fade .3s ease; }
-    .page.active { display:block; }
-    .hero { min-height:85vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; background:linear-gradient(135deg,#222,#666); color:#fff; border-radius:24px; padding:3rem; }
-    .avatar { width:120px; height:120px; border-radius:50%; margin-bottom:1.5rem; background:rgba(255,255,255,.15); display:flex; align-items:center; justify-content:center; font-size:3rem; border:4px solid rgba(255,255,255,.25); }
-    h1 { font-size:3rem; margin-bottom:.5rem; }
-    .subtitle { font-size:1.2rem; opacity:.9; margin-bottom:1.5rem; }
-    .bio { max-width:700px; }
-    .section-title { margin-bottom:1rem; font-size:2rem; }
-    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:1.5rem; margin-top:1.5rem; }
-    .card, .link-card { background:#fff; border-radius:18px; overflow:hidden; border:1px solid #ddd; box-shadow:0 8px 20px rgba(0,0,0,.08); transition:transform .2s; }
-    .card:hover, .link-card:hover { transform:translateY(-4px); }
-    .thumb { width:100%; height:180px; object-fit:cover; display:block; background:#ddd; }
-    .content { padding:1rem 1.25rem 1.25rem; }
-    .content h3 { margin-bottom:.5rem; }
-    .meta { color:#666; font-size:.92rem; margin-top:.35rem; }
-    .desc { color:#444; font-size:.95rem; }
-    .link-card { text-decoration:none; color:inherit; display:block; }
-    @keyframes fade { from { opacity:0; transform:translateY(10px);} to { opacity:1; transform:translateY(0);} }
-    @media (max-width:768px){ .sidebar{width:90px;padding:1rem .5rem;} .logo,.contact h3,.contact a span:last-child{display:none;} .nav-item{text-align:center;font-size:.85rem;} .contact a{justify-content:center;} h1{font-size:2rem;} .grid{grid-template-columns:1fr;} }
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#f3f3f1;--panel:#fff;--ink:#151515;--muted:#6b6b6b;--line:#deded9;--dark:#171717}
+    html{scroll-behavior:smooth}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);height:100vh;overflow:hidden}
+    a{color:inherit}
+    .app{display:flex;height:100vh}
+    .sidebar{width:285px;background:linear-gradient(180deg,#101010 0%,#353535 100%);color:#fff;padding:2rem 1.25rem;display:flex;flex-direction:column;box-shadow:4px 0 20px rgba(0,0,0,.18);flex-shrink:0}
+    .logo{font-size:1.45rem;font-weight:800;letter-spacing:-.04em;text-align:center;margin-bottom:2.25rem}
+    .logo span{font-weight:400;opacity:.55}
+    .nav-item{padding:.9rem 1rem;border-radius:11px;cursor:pointer;margin-bottom:.35rem;transition:.2s;color:#ddd;font-size:.95rem}
+    .nav-item i{width:22px;margin-right:8px}
+    .nav-item:hover,.nav-item.active{background:rgba(255,255,255,.13);color:#fff}
+    .contact{margin-top:auto;border-top:1px solid rgba(255,255,255,.18);padding-top:1.35rem}
+    .contact h3{font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;color:#aaa;margin-bottom:1rem}
+    .contact a{display:flex;align-items:center;gap:12px;color:#eee;text-decoration:none;margin-bottom:.8rem;font-size:.86rem;opacity:.88}
+    .contact a:hover{opacity:1}
+    .icon{width:20px;text-align:center}
+    .main{flex:1;overflow-y:auto;padding:1.5rem;background:#f7f7f5}
+    .page{display:none;animation:fade .3s ease;max-width:1200px;margin:auto}
+    .page.active{display:block}
+    .hero{min-height:calc(100vh - 3rem);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:linear-gradient(135deg,#202020,#606060);color:#fff;border-radius:24px;padding:3rem}
+    .avatar{width:128px;height:128px;border-radius:50%;margin-bottom:1.5rem;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:2.7rem;border:4px solid rgba(255,255,255,.2)}
+    h1{font-size:clamp(2.5rem,6vw,4.2rem);letter-spacing:-.06em;margin-bottom:.35rem}
+    .cn{font-size:1.05rem;opacity:.7;margin-bottom:1rem}
+    .subtitle{font-size:1.18rem;opacity:.95;margin-bottom:1.35rem;font-weight:600}
+    .bio{max-width:760px;line-height:1.75;color:#e9e9e9}
+    .hero-actions{display:flex;gap:.7rem;flex-wrap:wrap;justify-content:center;margin-top:1.8rem}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:.72rem 1rem;border:1px solid rgba(255,255,255,.3);border-radius:9px;text-decoration:none;font-size:.88rem;font-weight:700;transition:.2s}
+    .btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.12)}
+    .btn.solid{background:#fff;color:#111;border-color:#fff}
+    .availability{margin-top:1.5rem;font-size:.78rem;color:#d7f0e9;border:1px solid rgba(215,240,233,.25);padding:.55rem .8rem;border-radius:999px}
+    .section-title{font-size:2.2rem;letter-spacing:-.04em;margin:.75rem 0 .35rem}
+    .section-intro{color:var(--muted);max-width:760px;line-height:1.7;margin-bottom:1.35rem}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.2rem;margin-top:1.25rem}
+    .card,.link-card{background:var(--panel);border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 6px 18px rgba(0,0,0,.055);transition:.2s}
+    .card:hover,.link-card:hover{transform:translateY(-4px);box-shadow:0 12px 26px rgba(0,0,0,.09)}
+    .thumb{width:100%;height:155px;object-fit:cover;display:block;background:#d7d7d3}
+    .thumb.dark{background:linear-gradient(135deg,#202020,#696969)}
+    .content{padding:1.05rem 1.2rem 1.25rem}
+    .content h3{margin-bottom:.45rem;font-size:1.08rem;line-height:1.35}
+    .meta{color:#666;font-size:.82rem;margin-top:.35rem}
+    .desc{color:#4d4d4d;font-size:.9rem;line-height:1.6}
+    .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:.8rem}
+    .tag{font-size:.7rem;padding:4px 7px;border:1px solid #ddd;border-radius:999px;color:#666}
+    .paper{padding:1.2rem;background:#fff;border:1px solid var(--line);border-radius:14px;margin:.8rem 0}
+    .paper h3{font-size:1.05rem;line-height:1.4}
+    .paper .authors{margin-top:.35rem;font-size:.84rem;color:#555}
+    .paper .venue{font-size:.8rem;color:#333;font-weight:700;margin-top:.35rem}
+    .paper .status{display:inline-block;margin-top:.55rem;font-size:.7rem;border-radius:999px;padding:4px 8px;background:#f0f0ed;color:#555}
+    .two-col{display:grid;grid-template-columns:1fr 1.35fr;gap:1.2rem}
+    .panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:1.4rem}
+    .panel h3{font-size:1.15rem;margin-bottom:.8rem}
+    .timeline{border-left:1px solid #ccc;padding-left:1.25rem}
+    .item{position:relative;padding-bottom:1.35rem}
+    .item:before{content:"";position:absolute;width:8px;height:8px;background:#222;border-radius:50%;left:-1.55rem;top:.38rem}
+    .item .date{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:#777}
+    .item h3{font-size:.95rem;margin:.25rem 0}
+    .item p{font-size:.83rem;color:#666;line-height:1.55}
+    .skills{display:flex;flex-wrap:wrap;gap:7px}
+    .skill{background:#f0f0ed;border:1px solid #ddd;padding:6px 9px;border-radius:8px;font-size:.78rem}
+    .notice{background:#fff;border:1px solid var(--line);border-left:4px solid #222;border-radius:12px;padding:1.1rem 1.2rem;margin-top:1.2rem}
+    .notice strong{display:block;margin-bottom:.35rem}
+    .notice p{font-size:.88rem;color:#555;line-height:1.6}
+    .back{display:inline-flex;align-items:center;gap:7px;color:#555;text-decoration:none;font-size:.82rem;margin-bottom:1rem}
+    footer{padding:2rem 0 1rem;color:#777;font-size:.75rem;text-align:center}
+    @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+    @media(max-width:800px){
+      body{overflow:auto}.app{min-height:100vh;height:auto}.sidebar{width:76px;min-height:100vh;padding:1rem .45rem;position:fixed;left:0;top:0;z-index:10}.main{margin-left:76px;min-height:100vh;padding:.8rem}.logo{font-size:1rem;margin-bottom:1.2rem}.logo span,.nav-item span,.contact h3,.contact a span:last-child{display:none}.nav-item{text-align:center;padding:.8rem .35rem}.nav-item i{margin:0}.contact a{justify-content:center}.hero{min-height:calc(100vh - 1.6rem);padding:2rem 1.1rem}.two-col{grid-template-columns:1fr}.grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
 <div class="app">
   <aside class="sidebar">
-    <div class="logo">My Site</div>
-    <div class="nav-item active" onclick="showPage('home', this)">Home</div>
-    <div class="nav-item" onclick="showPage('projects', this)">Projects</div>
-    <div class="nav-item" onclick="showPage('researches', this)">Researches</div>
-    <div class="nav-item" onclick="showPage('sharing', this)">Sharing</div>
+    <div class="logo">Hanbin <span>Lin</span></div>
+    <div class="nav-item active" onclick="showPage('home',this)"><i class="fa-solid fa-house"></i><span>Home</span></div>
+    <div class="nav-item" onclick="showPage('projects',this)"><i class="fa-solid fa-flask"></i><span>Projects</span></div>
+    <div class="nav-item" onclick="showPage('researches',this)"><i class="fa-solid fa-book-open"></i><span>Research</span></div>
+    <div class="nav-item" onclick="showPage('sharing',this)"><i class="fa-solid fa-share-nodes"></i><span>Sharing</span></div>
     <div class="contact">
-      <h3>Contact</h3>
+      <h3>Connect</h3>
       <a href="mailto:linhanbin0453@gmail.com"><span class="icon"><i class="fa-solid fa-envelope"></i></span><span>Email</span></a>
-      <a href="https://scholar.google.com" target="_blank"><span class="icon"><i class="fa-brands fa-google-scholar"></i></span><span>Google Scholar</span></a>
-      <a href="https://github.com/Abin110" target="_blank"><span class="icon"><i class="fa-brands fa-github"></i></span><span>GitHub</span></a>
-      <a href="https://linkedin.cn/incareer/in/hanbin-lin-87057b300" target="_blank"><span class="icon"><i class="fa-brands fa-linkedin"></i></span><span>LinkedIn</span></a>
+      <a href="https://scholar.google.com/" target="_blank" rel="noopener"><span class="icon"><i class="fa-brands fa-google"></i></span><span>Google Scholar</span></a>
+      <a href="https://github.com/Abin110" target="_blank" rel="noopener"><span class="icon"><i class="fa-brands fa-github"></i></span><span>GitHub</span></a>
+      <a href="https://linkedin.cn/incareer/in/hanbin-lin-87057b300" target="_blank" rel="noopener"><span class="icon"><i class="fa-brands fa-linkedin"></i></span><span>LinkedIn</span></a>
     </div>
   </aside>
 
   <main class="main">
     <section id="home" class="page active">
       <div class="hero">
-        <div class="avatar">👋</div>
+        <div class="avatar"><i class="fa-solid fa-microscope"></i></div>
         <h1>Hanbin Lin</h1>
-        <p class="subtitle">林汉彬</p>
-        <p class="bio">Welcome to my personal website. I work on research, and knowledge sharing. This space showcases my projects, publications, and thoughts.</p>
+        <p class="cn">林汉彬</p>
+        <p class="subtitle">Adversarial Machine Learning · Multimedia Security</p>
+        <p class="bio">
+          I am an undergraduate researcher in Computer Science and Technology (Artificial Intelligence)
+          at Fujian Agriculture and Forestry University. My research interests lie at the intersection of
+          adversarial machine learning, multimedia security, proactive deepfake defense, and robust digital watermarking.
+        </p>
+        <div class="hero-actions">
+          <a class="btn solid" href="#" onclick="showPage('researches',document.querySelectorAll('.nav-item')[2]);return false;"><i class="fa-solid fa-book-open"></i> Research</a>
+          <a class="btn" href="assets/Hanbin_Lin_CV.pdf" target="_blank"><i class="fa-solid fa-file-pdf"></i> CV</a>
+          <a class="btn" href="mailto:linhanbin0453@gmail.com?subject=Fall%202027%20PhD%20Research%20Discussion"><i class="fa-solid fa-envelope"></i> Contact</a>
+        </div>
+        <div class="availability">Exploring PhD opportunities · Fall 2027</div>
       </div>
     </section>
 
     <section id="projects" class="page">
       <h2 class="section-title">Projects</h2>
+      <p class="section-intro">Selected research projects that form the core of my current research trajectory.</p>
       <div class="grid">
-        <div class="card"><img class="thumb" src="https://picsum.photos/400/240?1"><div class="content"><h3>Project A</h3><p class="desc">A brief introduction to the project and its key features.</p></div></div>
-        <div class="card"><img class="thumb" src="https://picsum.photos/400/240?2"><div class="content"><h3>Project B</h3><p class="desc">A brief introduction to the project and its key features.</p></div></div>
-        <div class="card"><img class="thumb" src="https://picsum.photos/400/240?3"><div class="content"><h3>Project C</h3><p class="desc">A brief introduction to the project and its key features.</p></div></div>
+        <article class="card">
+          <div class="thumb dark"></div>
+          <div class="content"><h3>GMM: Information-containing Adversarial Perturbation</h3><p class="desc">An efficient gradient masking method for embedding information into adversarial perturbations while attacking image classifiers.</p><div class="tags"><span class="tag">Adversarial ML</span><span class="tag">Gradient Masking</span><span class="tag">Information Embedding</span></div></div>
+        </article>
+        <article class="card">
+          <div class="thumb dark"></div>
+          <div class="content"><h3>SAPert: Proactive Defense Against UIT Deepfake</h3><p class="desc">A single-step adversarial perturbation approach targeting vulnerabilities in unpaired image translation models for proactive deepfake defense.</p><div class="tags"><span class="tag">Deepfake Defense</span><span class="tag">UIT</span><span class="tag">Adversarial Perturbation</span></div></div>
+        </article>
+        <article class="card">
+          <div class="thumb dark"></div>
+          <div class="content"><h3>Robust Cross-image Adversarial Watermark</h3><p class="desc">Adversarial watermarking designed for cross-image protection with improved resistance to JPEG compression.</p><div class="tags"><span class="tag">Watermarking</span><span class="tag">Multimedia Security</span><span class="tag">JPEG Robustness</span></div></div>
+        </article>
       </div>
     </section>
 
     <section id="researches" class="page">
-      <h2 class="section-title">Researches</h2>
+      <h2 class="section-title">Research</h2>
+      <p class="section-intro">My research is centered on understanding vulnerabilities in AI systems and turning those insights into practical multimedia protection mechanisms.</p>
+
       <div class="grid">
-        <a class="link-card" href="#" target="_blank"><img class="thumb" src="https://picsum.photos/400/240?4"><div class="content"><h3>Research Topic 1</h3><p class="meta">Your Name, Coauthor • Nature, 2026</p></div></a>
-        <a class="link-card" href="#" target="_blank"><img class="thumb" src="https://picsum.photos/400/240?5"><div class="content"><h3>Research Topic 2</h3><p class="meta">Your Name, Coauthor • Science, 2025</p></div></a>
-        <a class="link-card" href="#" target="_blank"><img class="thumb" src="https://picsum.photos/400/240?6"><div class="content"><h3>Research Topic 3</h3><p class="meta">Your Name, Coauthor • IEEE, 2024</p></div></a>
+        <article class="card"><div class="content"><h3>01 · Adversarial Examples</h3><p class="desc">Efficient and information-containing adversarial perturbations, gradient masking, transferable attacks, and robustness evaluation.</p><div class="tags"><span class="tag">Adversarial Examples</span><span class="tag">Robustness</span><span class="tag">Deep Learning</span></div></div></article>
+        <article class="card"><div class="content"><h3>02 · Multimedia Security & Forensics</h3><p class="desc">Proactive protection and authenticity of visual media, with an emphasis on manipulation-resistant mechanisms.</p><div class="tags"><span class="tag">Multimedia Forensics</span><span class="tag">Digital Authenticity</span></div></div></article>
+        <article class="card"><div class="content"><h3>03 · Deepfake Defense</h3><p class="desc">Protecting images from AI-based manipulation and studying the vulnerabilities of generative and image-translation models.</p><div class="tags"><span class="tag">Deepfake</span><span class="tag">Generative AI</span><span class="tag">UIT</span></div></div></article>
+        <article class="card"><div class="content"><h3>04 · Digital Watermarking</h3><p class="desc">Robust adversarial watermarking, cross-image generalization, data hiding, and resistance to lossy compression.</p><div class="tags"><span class="tag">Watermarking</span><span class="tag">Data Hiding</span><span class="tag">JPEG</span></div></div></article>
       </div>
+
+      <div class="notice">
+        <strong>Fall 2027 PhD research direction</strong>
+        <p>I am particularly interested in PhD projects combining adversarial machine learning with multimedia security, AI-generated content authenticity, deepfake defense, digital watermarking, and trustworthy generative or multimodal AI.</p>
+      </div>
+
+      <h2 class="section-title" style="margin-top:2rem">Selected Publications</h2>
+      <div class="paper"><h3>GMM: Efficient Information-containing Adversarial Perturbation Based on Gradient Masking Method</h3><p class="authors"><strong>Hanbin Lin</strong>, Wenxing Liao, Zhaogang Shu, Xiaolong Liu</p><p class="venue">Information Fusion</p></div>
+      <div class="paper"><h3>Single-step Adversarial Perturbation for Defending Unpaired Image Translation Deepfake</h3><p class="authors"><strong>Hanbin Lin</strong>, Zhiyu Lin, Xinze Liu, Xiaolong Liu</p><p class="venue">IEEE Transactions on Neural Networks and Learning Systems</p><span class="status">Under review</span></div>
+      <div class="paper"><h3>Robust Cross-image Adversarial Watermark Defending Against Deepfake with JPEG-resistance</h3><p class="authors">Zhiyu Lin, <strong>Hanbin Lin</strong>, Liqiang Lin, Shuwu Chen, Xiaolong Liu</p><p class="venue">Computer Vision and Image Understanding</p></div>
     </section>
 
     <section id="sharing" class="page">
       <h2 class="section-title">Sharing</h2>
+      <p class="section-intro">A space for technical notes, presentations, open-source work, and research-related materials.</p>
       <div class="grid">
-        <a class="link-card" href="#" target="_blank"><img class="thumb" src="https://picsum.photos/400/240?7"><div class="content"><h3>Blog Post</h3><p class="desc">A short description of this article or resource.</p></div></a>
-        <a class="link-card" href="#" target="_blank"><img class="thumb" src="https://picsum.photos/400/240?8"><div class="content"><h3>Talk & Slides</h3><p class="desc">A short description of this talk or presentation.</p></div></a>
-        <a class="link-card" href="#" target="_blank"><img class="thumb" src="https://picsum.photos/400/240?9"><div class="content"><h3>Open Resource</h3><p class="desc">A short description of this shared resource.</p></div></a>
+        <a class="link-card" href="#" target="_blank"><div class="thumb dark"></div><div class="content"><h3>Research Notes</h3><p class="desc">Technical notes on adversarial examples, DCT/DWT, deepfake defense, and multimedia security.</p></div></a>
+        <a class="link-card" href="#" target="_blank"><div class="thumb dark"></div><div class="content"><h3>Talks & Slides</h3><p class="desc">Selected presentations, research summaries, and academic materials.</p></div></a>
+        <a class="link-card" href="https://github.com/Abin110" target="_blank" rel="noopener"><div class="thumb dark"></div><div class="content"><h3>Open Source</h3><p class="desc">Code and experimental implementations available through GitHub.</p></div></a>
+      </div>
+
+      <div class="panel" style="margin-top:1.2rem">
+        <h3>Technical toolkit</h3>
+        <div class="skills">
+          <span class="skill">PyTorch</span><span class="skill">Python</span><span class="skill">Computer Vision</span><span class="skill">Adversarial ML</span><span class="skill">DCT / DWT</span><span class="skill">Deep Learning</span><span class="skill">Digital Watermarking</span><span class="skill">Generative Models</span><span class="skill">LaTeX</span>
+        </div>
       </div>
     </section>
+    <footer>© 2026 Hanbin Lin · AI Security · Multimedia Security · Adversarial Machine Learning</footer>
   </main>
 </div>
 <script>
-function showPage(id, el){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));el.classList.add('active');}
+function showPage(id,el){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  if(el) el.classList.add('active');
+  document.querySelector('.main').scrollTop=0;
+}
 </script>
 </body>
 </html>
